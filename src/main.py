@@ -30,4 +30,5 @@ def get_posts(page_name: str, options: Scraping_option):
     es = EsManagement()
     es.create_index(index_name)
     es.populate_index(data, index_name)
+    
     return None

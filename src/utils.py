@@ -10,13 +10,13 @@ def safe_date(date_value):
 def safe_value(field_val):
     return field_val if not pd.isna(field_val) else "Empty"
 
-def doc_generator(df):
+def doc_generator(df, index_name):
     df_iter = df.iterrows()
     for index, document in df_iter:
         yield {
-                "_index": 'your_index',
+                "_index": index_name,
                 "_type": "_doc",
-                "_id" : f"{document['postid']}",
+                "_id" : f"{document['post_id']}",
                 "_source": document.to_dict(),
             }
-    raise StopIteration
+    return None

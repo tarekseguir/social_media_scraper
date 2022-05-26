@@ -36,8 +36,8 @@ class EsManagement:
         :param path: The path to the CSV file.
         :param index_name: Name of the index to which documents should be written.
         """
-        #df = df.replace({np.nan: None})
+        df = df.replace({np.nan: None})
         logging.info(f"Writing {len(df.index)} documents to ES index {index_name}")
+        df.drop('shared_time', axis=1, inplace=True)
         df['time'] = df['time'].apply(safe_date)
-        df['fetched_time'] = df['fetched_time'].apply(safe_date)
-        helpers.bulk(self.es_client, doc_generator(df))
+        helpers.bulk(self.es_client, doc_generator(df, index_name))
