@@ -20,14 +20,20 @@ And with this you are ready to go.
 
 When you finish creating the enviorement you can access the swagger API to test the app.
 
-### Swagger-ui :
-[http://127.0.0.1/docs](http://127.0.0.1/docs).
+**Swagger-ui** : [http://127.0.0.1/docs](http://127.0.0.1/docs).
 
 ![swagger_ui](images/swagger-ui.png)
 
-Here also the kibana url to be able to query data and even creating charts and dashboards with no code. We choose elasticsearch as our database because it's a full text search engine and will enable us to search inside the texts
+Here also the kibana url to be able to query data and even creating charts and dashboards with no code. We choose elasticsearch as our database because it's a full text search engine and will enable us to search inside the texts.
 
-### Kibana :
-[http://127.0.0.1:5601/app/home/](http://127.0.0.1:5601/app/home#/)
+**Kibana** : [http://127.0.0.1:5601/app/home/](http://127.0.0.1:5601/app/home#/)
 
 ![Kibana](images/kibana.png)
+
+## Automated Testing
+
+In order to test our methods we make use of the package `unittest` :
+
+```bash
+docker exec -it fastapi python tests/test_*.py    
+```
