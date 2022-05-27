@@ -7,7 +7,7 @@ WORKDIR /code
 COPY requirements.txt .
 
 # install dependencies
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # copy the content of the local src directory to the working directory
 COPY src/ .
