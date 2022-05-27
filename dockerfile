@@ -12,7 +12,6 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # copy the content of the local src directory to the working directory
 COPY src/ .
 
-
 ENV ELASTICSEARCH_HOSTS=http://es-container:9200
 
 # command to run on container start

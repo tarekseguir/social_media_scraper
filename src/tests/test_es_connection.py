@@ -1,5 +1,10 @@
+import os
 import sys
-sys.path.append('../')
+
+script_dir = os.path.dirname( __file__ )
+mymodule_dir = os.path.join( script_dir, '..')
+sys.path.append( mymodule_dir )
+
 import unittest
 import pandas as pd
 from es_data.es_connection import EsManagement
@@ -17,7 +22,7 @@ class EsconnectionTests(unittest.TestCase):
     def test_populate_index(self):
 
         index_name = "test"
-        data = pd.read_csv('test_data/test1.csv')
+        data = pd.read_csv('tests/test_data/test1.csv')
         es=EsManagement()
 
         number_of_doc = int(es.es_client.cat.count(index_name, params={"format": "json"})[0]['count'])

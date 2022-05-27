@@ -38,6 +38,11 @@ class EsManagement:
         """
         df = df.replace({np.nan: None})
         logging.info(f"Writing {len(df.index)} documents to ES index {index_name}")
-        df.drop('shared_time', axis=1, inplace=True)
-        df['time'] = df['time'].apply(safe_date)
+
+        if 'shared_time' in df.columns:
+            df.drop('shared_time', axis=1, inplace=True)
+
+        if 'time' in df.columns:
+            df['time'] = df['time'].apply(safe_date)
+            
         helpers.bulk(self.es_client, doc_generator(df, index_name))
